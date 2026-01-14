@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Animated QR Code</title>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+
+<style>
+body{
+  background:#020617;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:white;
+  font-family:system-ui;
+}
+.card{
+  background:#020617;
+  padding:40px;
+  border-radius:20px;
+  box-shadow:0 0 40px #6366f1;
+  text-align:center;
+}
+#qr svg{
+  animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1); filter:drop-shadow(0 0 0 #6366f1);}
+  50%{transform:scale(1.05); filter:drop-shadow(0 0 25px #6366f1);}
+  100%{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <h2>🔥 Animated QR</h2>
+  <div id="qr"></div>
+</div>
+
+<script>
+QRCode.toString(
+  "https://google.com",
+  { type: "svg", width: 220 },
+  function (err, svg) {
+    document.getElementById("qr").innerHTML = svg;
+  }
+);
+</script>
+</body>
+</html>
